@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "191696867101",
+    "project_id": "lovepet-7e012",
+    "storage_bucket": "lovepet-7e012.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191696867101:android:709b43b6355099488edbf4",
+        "android_client_info": {
+          "package_name": "com.example.lovepet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191696867101-7dsf5jcpbduj11i8kak6da8d9rpoomjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0JMfKrdS5pWbM909Q7QgpFpCD_rAb2zs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191696867101-7dsf5jcpbduj11i8kak6da8d9rpoomjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
