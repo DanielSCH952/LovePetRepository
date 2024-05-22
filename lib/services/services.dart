@@ -146,7 +146,7 @@ Future<List<Estado>> getEstadosList() async {
 Future<List<Municipio>> getMunicipiosList() async {
   await Future.delayed(
     const Duration(
-      seconds: 2,
+      seconds: 1,
       milliseconds: 30,
     ),
   );

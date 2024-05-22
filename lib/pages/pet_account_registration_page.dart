@@ -5,10 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lovepet/widgets/card_image.dart';
-import 'package:lovepet/widgets/custom_dropdown2.dart';
-import 'package:lovepet/widgets/formtextfield.dart';
-import 'package:lovepet/widgets/picker_image.dart';
+import 'package:lovepet/widgets/personal_widgets/card_image.dart';
+import 'package:lovepet/widgets/personal_widgets/custom_dropdown2.dart';
+import 'package:lovepet/widgets/personal_widgets/formtextfield.dart';
+import 'package:lovepet/widgets/personal_widgets/picker_image.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PetAccountRegistrationPage extends StatefulWidget {

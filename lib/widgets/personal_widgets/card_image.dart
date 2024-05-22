@@ -8,18 +8,17 @@ class WgCardImage extends StatelessWidget {
   final EdgeInsets margen;
   final EdgeInsets padding;
   final File image;
-  final VoidCallback changeImage;
-  final VoidCallback cropImage;
+  final VoidCallback? changeImage;
+  final VoidCallback? cropImage;
   const WgCardImage({
     super.key,
     this.widthItem = 294.75,
     this.heightItem = 294.75,
     this.margen = const EdgeInsets.all(5.5),
     this.padding = const EdgeInsets.all(5.2),
-    
     required this.image,
-    required this.changeImage,
-    required this.cropImage,
+    this.changeImage,
+    this.cropImage,
   });
 
   @override
@@ -29,7 +28,7 @@ class WgCardImage extends StatelessWidget {
       width: widthItem,
       height: heightItem,
       margin: margen,
-      padding:padding,
+      padding: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
       ),

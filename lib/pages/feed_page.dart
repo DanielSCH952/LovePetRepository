@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lovepet/widgets/bottomnavigationbar_widget.dart';
+import 'package:lovepet/widgets/personal_widgets/bottomnavigationbar_widget.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({super.key});
@@ -10,11 +10,10 @@ class FeedPage extends StatefulWidget {
 
 class _FeedPageState extends State<FeedPage> {
   int $selectedIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-
 
     return Scaffold(
       appBar: AppBar(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lovepet/widgets/bottomnavigationbar_widget.dart';
+import 'package:lovepet/widgets/personal_widgets/bottomnavigationbar_widget.dart';
 
 class NotFoundPage extends StatefulWidget {
   const NotFoundPage({super.key});
