@@ -3,7 +3,7 @@ class Direccion {
   int? idMunicipio;
   String? municio;
   String? estado;
-  int cp;
+  String cp;
 
   Direccion({
     this.id,
@@ -17,7 +17,7 @@ class Direccion {
       id: int.parse($json['id']),
       municio: $json['municipio']['nombre'],
       estado: $json['estado']['nombre'],
-      cp: int.parse($json['cp']),
+      cp: $json['cp']
     );
   }
   Map<String, dynamic> toJson() {

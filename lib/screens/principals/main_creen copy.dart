@@ -1,35 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:lovepet/constants.dart';
 import 'package:lovepet/screens/principals/adopciones_screen.dart';
 import 'package:lovepet/screens/principals/consejos_screen.dart';
 import 'package:lovepet/screens/principals/extravio_screen.dart';
 import 'package:lovepet/screens/principals/home_screen.dart';
+import 'package:lovepet/screens/principals/maps_screen.dart';
+import 'package:lovepet/widgets/nw/profile_swipe_screen.dart';
+import 'package:lovepet/widgets/wg/profile_avatar.dart';
 import 'package:badges/badges.dart' as badges;
 
-class MainScreen2z extends StatefulWidget {
-  const MainScreen2z({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<MainScreen2z> createState() => _MainScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen2z>
-    with TickerProviderStateMixin {
+class _MainScreenState extends State<MainScreen> {
   int myCurrentIndex = 0;
-
-  late PageController _pageViewController;
-  late TabController _tabController;
 
   // Lista de paginas
   final List<Widget> pages = [
-    const Home(),
-    Container(color: Colors.red),
-    Container(color: Colors.purple),
+    Home(),
+    ProfileSwipeScreen(),
+    MapScreen(),
     Container(color: Colors.orange),
-    const Extravio(),
-    const Adopciones(),
-    const Consejos(),
+    Extravio(),
+    Adopciones(),
+    Consejos(),
   ];
 
   // Lista de títulos
@@ -42,35 +42,6 @@ class _MainScreenState extends State<MainScreen2z>
     'Adopciones',
     'Consejos'
   ];
-  @override
-  void initState() {
-    _pageViewController = PageController(
-      initialPage: 0,
-    );
-
-    _tabController = TabController(
-      length: pages.length,
-      vsync: this,
-      initialIndex: myCurrentIndex,
-    );
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _pageViewController.dispose();
-    _tabController.dispose();
-  }
-
-  void _handlePageViewChanged(int? currentPageIndex) {
-    if (currentPageIndex == null) return;
-    if (!(currentPageIndex < pages.length)) return;
-    setState(() {
-      _tabController.index = currentPageIndex;
-      myCurrentIndex = currentPageIndex;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,12 +58,7 @@ class _MainScreenState extends State<MainScreen2z>
             },
             child: Container(
               margin: EdgeInsets.all(10),
-              child: Image.network(
-                "https://cdn-icons-png.flaticon.com/512/3541/3541871.png",
-                width: 30,
-                height: 30,
-                fit: BoxFit.cover,
-              ),
+              child: ProfileAvatar(),
             ),
           ),
           title: Text(
@@ -132,12 +98,7 @@ class _MainScreenState extends State<MainScreen2z>
             ),
           ],
         ),
-        body: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _pageViewController,
-          onPageChanged: _handlePageViewChanged,
-          children: pages,
-        ),
+        body: pages[myCurrentIndex],
         bottomNavigationBar: Container(
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
           decoration: const BoxDecoration(boxShadow: [
@@ -194,11 +155,6 @@ class _MainScreenState extends State<MainScreen2z>
               onTap: (myNewCurrent) {
                 setState(() {
                   myCurrentIndex = myNewCurrent;
-                  _pageViewController.animateToPage(
-                    myNewCurrent,
-                    duration: Duration(seconds: 1),
-                    curve: Curves.decelerate,
-                  );
                 });
               },
             ),

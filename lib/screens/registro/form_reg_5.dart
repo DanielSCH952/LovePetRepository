@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:lovepet/extension/sized_box_extension.dart';
 import 'package:lovepet/widgets/personal_widgets/card_image.dart';
 import 'package:lovepet/widgets/personal_widgets/picker_image.dart';
 

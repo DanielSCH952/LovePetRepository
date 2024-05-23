@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:lovepet/components/under_part.dart';
 import 'package:lovepet/constants.dart';
-import 'package:lovepet/services/router.dart';
+import 'package:lovepet/widgets/wg/rounded_button.dart';
+import 'package:lovepet/widgets/wg/rounded_input_field.dart';
+import 'package:lovepet/widgets/wg/rounded_password_field.dart';
 
-import '../widgets/wg/rounded_button.dart';
-import '../widgets/wg/rounded_input_field.dart';
-import '../widgets/wg/rounded_password_field.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<LoginScreen> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    AnimateRouter $route = AnimateRouter();
     return Scaffold(
       body: Container(
         color: kSecundaryColor,
@@ -87,13 +84,16 @@ class _LoginState extends State<LoginScreen> {
                       RoundedButton(
                         text: 'Iniciar Sesión',
                         press: () {
-                          
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              "/main", (route) => false);
                         },
                       ),
                       UnderPart(
                         title: "¿No tienes una cuenta?",
                         navigatorText: "Regristrar",
                         onTap: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              "/main", (route) => false);
                           // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(

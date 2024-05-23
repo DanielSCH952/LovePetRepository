@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lovepet/constants.dart';
-import 'package:lovepet/extension/sized_box_extension.dart';
 import 'package:lovepet/widgets/wg/rounded_buttonWelcome.dart';
 
-class Welcome extends StatelessWidget {
+class Welcome extends StatefulWidget {
   const Welcome({super.key});
 
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,7 @@ class Welcome extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              10.kH,
+              const SizedBox(height: 10),
               const Text(
                 'Encuentra al compañero perfecto',
                 style: TextStyle(
@@ -32,7 +36,7 @@ class Welcome extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              4.kH,
+              const SizedBox(height: 2),
               const Text(
                 'para tu mascota',
                 style: TextStyle(
@@ -41,7 +45,7 @@ class Welcome extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              70.kH,
+              const SizedBox(height: 70),
               ClipRRect(
                 borderRadius: BorderRadius.circular(200.0),
                 child: Image.asset(
@@ -51,7 +55,8 @@ class Welcome extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              65.kH,
+              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               RoundedButtonWelcome(
                 text: 'Iniciar Sesión',
                 press: () {
@@ -59,12 +64,12 @@ class Welcome extends StatelessWidget {
                       .pushNamedAndRemoveUntil("/login", (route) => false);
                 },
               ),
-             20.kH,
+              SizedBox(width: 20),
               RoundedButtonWelcome(
                 text: 'Crear cuenta',
                 press: () {
                   Navigator.of(context)
-                      .pushNamedAndRemoveUntil("/registro", (route) => false);
+                      .pushNamedAndRemoveUntil("/productos", (route) => false);
                 },
               ),
             ],

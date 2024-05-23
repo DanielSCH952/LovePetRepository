@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:lovepet/models/estado.dart';
 import 'package:lovepet/models/municipio.dart';
 
@@ -131,6 +133,27 @@ Future<File?> recortarImagen(BuildContext $contexto, File $image) async {
   );
   if (imageCropped == null) return null;
   return File(imageCropped.path);
+}
+
+Future<LatLng> obtenerPosicionActual() async {
+  Position posicionActual;
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission != LocationPermission.whileInUse ||
+      permission != LocationPermission.always) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      posicionActual = await Geolocator.getCurrentPosition(
+          forceAndroidLocationManager: true);
+      return LatLng(posicionActual.latitude, posicionActual.longitude);
+    }
+    posicionActual =
+        await Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+    return LatLng(posicionActual.latitude, posicionActual.longitude);
+  }
+  posicionActual =
+      await Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+  return LatLng(posicionActual.latitude, posicionActual.longitude);
 }
 
 Future<List<Estado>> getEstadosList() async {

@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:lovepet/models/custom_response.dart';
@@ -58,8 +60,8 @@ class Usuario {
     });
 
     try {
-      final $responseAPI =
-          await clientApi.$services.post("${clientApi.urlAPI}/", data: userForm);
+      final $responseAPI = await clientApi.$services
+          .post("${clientApi.urlAPI}/", data: userForm);
       final $dataResponseAPI =
           json.decode($responseAPI.data) as Map<String, dynamic>;
 

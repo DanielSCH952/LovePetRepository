@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:lovepet/screens/principals/perfil_mascota.dart';
 import 'package:lovepet/screens/registro/home_page.dart';
 import 'package:lovepet/pages/not_found.dart';
-import 'package:lovepet/pages/welcome_page.dart';
 import 'package:lovepet/screens/login_screen.dart';
 import 'package:lovepet/screens/principals/main_creen.dart';
+import 'package:lovepet/screens/welcome_screen.dart';
 
+import '../screens/principals/main_creen copy.dart';
 import '../screens/principals/perfil.dart';
 
 class AnimateRouter {
   AnimateRouter();
   final Map<String, Widget> _routes = {
-    '/': const WelcomeLovePet(),
+    '/': const Welcome(),
     '/login': const LoginScreen(),
     '/registro': const AccountRegistrationPage(),
     '/main': const MainScreen(),

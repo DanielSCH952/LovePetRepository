@@ -1,0 +1,96 @@
+import 'package:flutter/material.dart';
+import 'package:lovepet/widgets/personal_widgets/formtextfield.dart';
+
+class EstablecimientoScreen extends StatefulWidget {
+  const EstablecimientoScreen({
+    super.key,
+    required this.txtNombreEstablecimiento,
+    required this.txtCorreoEstablecimiento,
+    required this.txtTelefonoEstablecimiento,
+    required this.txtDescripcionEstablecimiento,
+    required this.txtHorariosAtencionEstablecimiento,
+    required this.txtDireccionEstablecimiento,
+    required this.txtTipoEstablecimiento,
+    required this.txtImagenEstablecimiento,
+  });
+
+  final TextEditingController txtNombreEstablecimiento;
+  final TextEditingController txtCorreoEstablecimiento;
+  final TextEditingController txtTelefonoEstablecimiento;
+  final TextEditingController txtDescripcionEstablecimiento;
+  final TextEditingController txtHorariosAtencionEstablecimiento;
+  final TextEditingController txtDireccionEstablecimiento;
+  final TextEditingController txtTipoEstablecimiento;
+  final TextEditingController txtImagenEstablecimiento;
+
+  @override
+  State<EstablecimientoScreen> createState() => _EstablecimientoScreenState();
+}
+
+class _EstablecimientoScreenState extends State<EstablecimientoScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Form(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                WgFormTextField(
+                  prop: 'Nombre',
+                  errorMessage: "Falta completar este campo",
+                  txtController: widget.txtNombreEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Correo',
+                  errorMessage: "Ingrese su correo, es requerido.",
+                  txtController: widget.txtCorreoEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Teléfono',
+                  errorMessage: "Ingrese su teléfono, es requerido.",
+                  txtController: widget.txtTelefonoEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Descripción',
+                  errorMessage: "Ingrese su descripción, es requerido.",
+                  txtController: widget.txtDescripcionEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Horario de atención',
+                  errorMessage: "Ingrese el horario de atención, es requerido.",
+                  txtController: widget.txtHorariosAtencionEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Dirección',
+                  errorMessage: "Ingrese la dirección, es requerido.",
+                  txtController: widget.txtDireccionEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Tipo de establecimiento',
+                  errorMessage: "Ingrese el tipo de establecimiento, es requerido.",
+                  txtController: widget.txtTipoEstablecimiento,
+                  inputType: TextInputType.text,
+                ),
+                WgFormTextField(
+                  prop: 'Imagen',
+                  errorMessage: "Ingrese la imagen, es requerido.",
+                  txtController: widget.txtImagenEstablecimiento,
+                  inputType: TextInputType.url,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:lovepet/extension/sized_box_extension.dart';
+import 'package:lovepet/models/direccion.dart';
 import 'package:lovepet/models/estado.dart';
 import 'package:lovepet/models/municipio.dart';
+import 'package:lovepet/models/usuario.dart';
 import 'package:lovepet/screens/registro/form_reg_2.dart';
 import 'package:lovepet/screens/registro/form_reg_3.dart';
 import 'package:lovepet/screens/registro/form_reg_4.dart';
@@ -47,9 +49,10 @@ class _AccountRegistrationPageState extends State<AccountRegistrationPage>
   final $txtPwdUsuarioCheckController = TextEditingController();
   final $txtCodigoPostalController = TextEditingController();
 
-  String? $generoUsuario;
-  Estado? $estadoUsuario;
-  Municipio? $municipio;
+  String? $generoUsuario = "M";
+  Estado? $estadoUsuario = Estado(estado: "Puebla", idEstado: 21);
+  Municipio? $municipio =
+      Municipio(municipio: "Tezitlán", idEstado: 21, idMunicipio: 175);
   File? imagenUsuario;
   bool show = false;
   bool showPassword = false;
@@ -82,7 +85,7 @@ class _AccountRegistrationPageState extends State<AccountRegistrationPage>
       WgFormPage1(
         txtNombreUsuario: $txtNombreUsuario,
         txtApmtUsuarioController: $txtApmtUsuarioController,
-        txtApptUsuarioController: $txtApmtUsuarioController,
+        txtApptUsuarioController: $txtApptUsuarioController,
       ),
       WgFormView2(
         txtEdadUsuarioController: $txtEdadUsuarioController,
@@ -130,7 +133,7 @@ class _AccountRegistrationPageState extends State<AccountRegistrationPage>
     if (img == null) return;
     setState(() {
       imagenUsuario = File(img.path);
-    _updateContextWg();
+      _updateContextWg();
     });
   }
 
@@ -157,9 +160,30 @@ class _AccountRegistrationPageState extends State<AccountRegistrationPage>
     });
   }
 
-  void _updateCurrentPageIndex(int index) {
+  void _updateCurrentPageIndex(int index) async {
     if ($currentIndexWidget == index) return;
-    if ($currentIndexWidget > _wgListViews.length) return;
+    if ($currentIndexWidget > _wgListViews.length) {
+      final r = await Usuario(
+        nombre: $txtNombreUsuario.text,
+        apellidoMaterno: $txtApmtUsuarioController.text,
+        apellidoPaterno: $txtApptUsuarioController.text,
+        correo: $txtCorreoUsuarioController.text,
+        edad: int.parse($txtEdadUsuarioController.text),
+        direccion: Direccion(
+            cp: $txtCodigoPostalController.text,
+            idMunicipio: $municipio!.idMunicipio),
+        imagen: "",
+      ).saveToDB(imagenUsuario!);
+      print(r);
+
+      Navigator.of(context).pushAndRemoveUntil(
+        _router.createRoute(
+          "/",
+        ),
+        (route) => false,
+      );
+    }
+
     setState(() {
       $currentIndexWidget = index;
     });
@@ -173,6 +197,14 @@ class _AccountRegistrationPageState extends State<AccountRegistrationPage>
 
   @override
   Widget build(BuildContext context) {
+    $txtNombreUsuario.text = "Daniel";
+    $txtApmtUsuarioController.text = "Chiguisl";
+    $txtApptUsuarioController.text = "Sepulveda";
+    $txtCorreoUsuarioController.text = "chiguilsdanielsepulveda@gmail.com";
+    $txtEdadUsuarioController.text = "22";
+    $txtPwdUsuarioController.text = "12345";
+    $txtTelefonoUsuarioController.text = "2781230848";
+    $txtCodigoPostalController.text = "73840";
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
